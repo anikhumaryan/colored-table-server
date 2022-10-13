@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refresh</title>
+</head>
+<body>
+    <script>
+       
+       function httpGet(){
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.open( "GET", 'http://localhost:4444/', false );
+            xmlHttp.send( null );
+            return xmlHttp.responseText;
+            }
+            
+        let gago = httpGet();
+        let myArray = gago.split(",")
+
+        let text = "<table border='1px'>"
+        let m = 0
+       
+        for(let i = 0; i <= 15; i++){
+            text += "<tr  height = '30px' width = '30px'>";
+            for(let j = 0; j <= 15; j++){
+                        d = parseInt(myArray[m])
+                        if((d === 1 || d===2 )|| d === 3){
+                            text += "<td bgcolor ='#6E260E' height = '30px' width = '30px'>"
+                        } else if ((d === 4 || d === 5) || d === 6){
+                            text += "<td bgcolor = '#818589' height = '30px' width = '30px'>"
+                        } else {
+                            text += "<td bgcolor = '#00008B'  height = '30px' width = '30px'>"
+                        } 
+                        text += "</td>";
+                        m++
+                        console.log(m)
+                }
+                text += "</tr>"
+            }
+        text+= "</table>"
+
+        document.write(text)
+    </script>
+</body>
+</html>
